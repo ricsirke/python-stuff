@@ -33,12 +33,11 @@ class readSens(Thread):
 		
 	def data_to_json(self, data):
 		jsondata = { "data": [] }
-		
-		
-
 		return json.dumps(jsondata)
 		
-		
+    def send(self, data):
+        self.sockio.emit("newdata", {"data":self.data_to_json(data)}, broadcast=True)
+        
 	def read(self):
 		portname = self.port_name
 		ser = serial.Serial(
@@ -54,21 +53,14 @@ class readSens(Thread):
 		buff = ""
 		while not self.thread_stop_event.isSet():
 			line = ser.readline()
-			#spline = line.split("#")
 			
 			print line
-			self.sockio.emit("newdata", {"data":self.data_to_json(buff)}, broadcast=True)
+			self.send(buff)
 			
-			# if len(spline) == 2:
-				# buff += spline[0]
-				
-				# print buff
-				# self.sockio.emit("newdata", {"data":self.data_to_json(buff)}, broadcast=True)
-				
-				# buff = spline[1]
-			# elif len(spline) == 1:
-				# buff += spline[0]
 		ser.close()
 				
 	def run(self):
 		self.read()
+		
+	def stop(self):
+	    self.thread_stop_event.set()

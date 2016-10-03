@@ -1,6 +1,6 @@
 import sys
-from flask import Flask, Response, stream_with_context
-from flask_socketio import SocketIO, emit
+from flask import Flask
+from flask_socketio import SocketIO
 from thread import *
 from sensread import *
 
@@ -27,7 +27,5 @@ if __name__ == '__main__':
 		socketio.run(app)
 	except KeyboardInterrupt as e:
 		print e
-		thread.thread_stop_event.set()
-		# sys.exit()
-		
+		thread.stop()		
 		
