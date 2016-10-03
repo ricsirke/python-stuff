@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Tutorial</title>
+        <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    </head>
+    <body>
+
+        asdf
+
+    </body>
+    <script>
+        var sock = io("http://localhost");
+        function onNewData(data){
+            console.log(data);
+        }
+        sock.on("newdata", onNewData(data));
+    
+    
+    </script>
+</html> 
