@@ -1,4 +1,4 @@
-import compgeom as cg
+import convex_hull as ch
 from Tkinter import *
 import random
 
@@ -43,10 +43,10 @@ if __name__ == "__main__":
     
     drawPoints(canvas, P)
     
-    # slowhull = cg.slowConvHull(P)
+    # slowhull = ch.slowConvHull(P)
     # drawHull(canvas, slowhull)
     
-    hull = cg.convHull(P)
+    hull = ch.convHull(P)
     drawHullFlat(canvas, hull)
     
     

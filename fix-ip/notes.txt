@@ -1,0 +1,12 @@
+szerver:
+    folyamatosan kap jelet az "otthonomtól", hogy mi az ip-je
+    ezt eltárolja (egyelőre egy fájlban)
+    
+    
+hogy használom fel az információt?
+    GET kérés, hogy mi az otthoni ip-m
+    autentikációra is szükség van
+    
+    
+milyen gyakran változik az ip?
+    ha változik, akkor letárolni az időpontot, esetleg az ip-t is (lehetne valamilyen távolságot számolni)
